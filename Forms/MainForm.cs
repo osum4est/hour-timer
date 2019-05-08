@@ -16,7 +16,6 @@ namespace HourTimer.Forms
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadTimerData();
-            TimerDataBinding.DataSource = timerData;
             StartNow.Checked = timerData.Completed;
         }
 
@@ -45,12 +44,20 @@ namespace HourTimer.Forms
                 StartDate = Settings.Default.StartDate,
                 TimerLength = Settings.Default.TimerLength
             };
+
+            StartDate.Value = timerData.StartDate;
+            StartTime.Value = timerData.StartDate;
+            TimerLength.Value = timerData.TimerLength;
         }
 
         private void SaveTimerData()
         {
+            timerData.TimerLength = (int)TimerLength.Value;
+
             if (StartNow.Checked)
                 timerData.StartDate = DateTime.Now;
+            else
+                timerData.StartDate = StartDate.Value.Date + StartTime.Value.TimeOfDay;
 
             Settings.Default.StartDate = timerData.StartDate;
             Settings.Default.TimerLength = timerData.TimerLength;

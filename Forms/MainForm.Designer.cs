@@ -31,7 +31,6 @@ namespace HourTimer.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.StartLargeTimer = new System.Windows.Forms.Button();
             this.StartSmallTimer = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,10 +41,8 @@ namespace HourTimer.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.TimerSetup = new System.Windows.Forms.GroupBox();
             this.StartNow = new System.Windows.Forms.CheckBox();
-            this.TimerDataBinding = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TimerLength)).BeginInit();
             this.TimerSetup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TimerDataBinding)).BeginInit();
             this.SuspendLayout();
             // 
             // StartLargeTimer
@@ -90,7 +87,6 @@ namespace HourTimer.Forms
             // 
             // StartDate
             // 
-            this.StartDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.TimerDataBinding, "StartDate", true));
             this.StartDate.Location = new System.Drawing.Point(145, 117);
             this.StartDate.Margin = new System.Windows.Forms.Padding(10);
             this.StartDate.Name = "StartDate";
@@ -100,7 +96,6 @@ namespace HourTimer.Forms
             // 
             // StartTime
             // 
-            this.StartTime.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.TimerDataBinding, "StartDate", true));
             this.StartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.StartTime.Location = new System.Drawing.Point(145, 73);
             this.StartTime.Margin = new System.Windows.Forms.Padding(10);
@@ -112,7 +107,6 @@ namespace HourTimer.Forms
             // 
             // TimerLength
             // 
-            this.TimerLength.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.TimerDataBinding, "TimerLength", true));
             this.TimerLength.Location = new System.Drawing.Point(275, 33);
             this.TimerLength.Margin = new System.Windows.Forms.Padding(10);
             this.TimerLength.Name = "TimerLength";
@@ -158,10 +152,6 @@ namespace HourTimer.Forms
             this.StartNow.UseVisualStyleBackColor = true;
             this.StartNow.CheckedChanged += new System.EventHandler(this.StartNow_CheckedChanged);
             // 
-            // TimerDataBinding
-            // 
-            this.TimerDataBinding.DataSource = typeof(HourTimer.TimerData);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -179,7 +169,6 @@ namespace HourTimer.Forms
             ((System.ComponentModel.ISupportInitialize)(this.TimerLength)).EndInit();
             this.TimerSetup.ResumeLayout(false);
             this.TimerSetup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TimerDataBinding)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,6 +185,5 @@ namespace HourTimer.Forms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox TimerSetup;
         private System.Windows.Forms.CheckBox StartNow;
-        private System.Windows.Forms.BindingSource TimerDataBinding;
     }
 }
