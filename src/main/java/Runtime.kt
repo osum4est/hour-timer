@@ -27,6 +27,7 @@ class Runtime : Application() {
         val root: Parent = FXMLLoader.load(javaClass.getResource("../resources/view/MainWindow.fxml"))
         primaryStage?.title = "Runtime"
         primaryStage?.scene = Scene(root)
+        primaryStage?.isResizable = false
         primaryStage?.show()
     }
 }
