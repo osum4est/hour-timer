@@ -6,11 +6,14 @@ import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.scene.text.Font
 import javafx.stage.Stage
+import java.util.prefs.Preferences
 
 class Runtime : Application() {
     companion object {
-        val VERSION: String = "v1.0.0"
-        val COPYRIGHT: String = "© Forrest Jones 2019"
+        const val VERSION: String = "v1.0.0"
+        const val COPYRIGHT: String = "© Forrest Jones 2019"
+
+        val PREFS: Preferences = Preferences.userNodeForPackage(Runtime::class.java)
 
         @JvmStatic
         fun main() {
