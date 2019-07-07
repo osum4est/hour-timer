@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import main.java.controls.JFXNumberField?>
+<BorderPane stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.999-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.MainWindowController">
+    <top>
+        <JFXToolbar prefHeight="64" style="-fx-background-color: #00c853;">
+            <leftItems>
+                <Label maxHeight="1.7976931348623157E308" text="Runtime">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                    <padding>
+                        <Insets left="15.0"/>
+                    </padding>
+                </Label>
+            </leftItems>
+        </JFXToolbar>
+    </top>
+
+    <center>
+        <VBox maxHeight="-Infinity" maxWidth="-Infinity">
+            <GridPane hgap="10.0"
+                      style="-fx-background-radius: 5; -fx-background-color: #ffffff; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.26), 10, 0.12, -1, 2);"
+                      vgap="10.0">
+                <columnConstraints>
+                    <ColumnConstraints/>
+                    <ColumnConstraints/>
+                </columnConstraints>
+
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                </rowConstraints>
+
+                <padding>
+                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                </padding>
+
+                <Label text="Race Name:"/>
+                <Label text="Length (Hours):" GridPane.rowIndex="1"/>
+                <Label text="Start Date:" GridPane.rowIndex="2"/>
+                <Label text="Start Time:" GridPane.rowIndex="3"/>
+
+                <JFXTextField fx:id="raceName" focusColor="#ffab00" GridPane.columnIndex="1">
+                    <validators>
+                        <RequiredFieldValidator message="Required">
+                        </RequiredFieldValidator>
+                    </validators>
+                </JFXTextField>
+                <JFXNumberField fx:id="length" focusColor="#ffab00" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <validators>
+                        <RequiredFieldValidator message="Required">
+                        </RequiredFieldValidator>
+                    </validators>
+                </JFXNumberField>
+                <JFXDatePicker fx:id="startDate" defaultColor="#ffab00" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <validators>
+                        <RequiredFieldValidator message="Required">
+                        </RequiredFieldValidator>
+                    </validators>
+                </JFXDatePicker>
+                <JFXTimePicker fx:id="startTime" defaultColor="#ffab00" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <validators>
+                        <RequiredFieldValidator message="Required">
+                        </RequiredFieldValidator>
+                    </validators>
+                </JFXTimePicker>
+            </GridPane>
+
+            <JFXButton buttonType="RAISED" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                       onAction="#showLargeTimer" prefHeight="40.0" style="-fx-background-color: #00c853;"
+                       text="Large Timer" textAlignment="CENTER">
+                <VBox.margin>
+                    <Insets top="15.0"/>
+                </VBox.margin>
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                       onAction="#showSmallTimer" prefHeight="40.0" style="-fx-background-color: #00c853;"
+                       text="Small Timer" textAlignment="CENTER">
+                <VBox.margin>
+                    <Insets top="15.0"/>
+                </VBox.margin>
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </JFXButton>
+            <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                <VBox.margin>
+                    <Insets top="15.0"/>
+                </VBox.margin>
+
+                <Label fx:id="copyright" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+                <Label fx:id="version"/>
+            </HBox>
+            <BorderPane.margin>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            </padding>
+        </VBox>
+    </center>
+</BorderPane>
