@@ -5,11 +5,16 @@ import com.jfoenix.controls.JFXTextField
 import com.jfoenix.controls.JFXTimePicker
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
+import javafx.fxml.FXMLLoader
+import javafx.scene.Parent
+import javafx.scene.Scene
 import javafx.scene.control.Label
+import javafx.stage.Stage
 import main.java.Runtime
 import main.java.controls.JFXNumberField
 import java.time.LocalDate
 import java.time.LocalTime
+
 
 class MainWindowController {
     @FXML
@@ -42,7 +47,23 @@ class MainWindowController {
             return
 
         saveData()
-        TODO()
+
+        val loader = FXMLLoader(javaClass.getResource("../../resources/view/LargeTimer.fxml"))
+        val root: Parent = loader.load()
+        val stage = Stage()
+
+        val controller = loader.getController<TimerController>()
+        controller.raceName = raceName.text
+        controller.length = Integer.parseInt(length.text)
+        controller.startDate = startDate.value
+        controller.startTime = startTime.value
+
+        stage.scene = Scene(root, 450.0, 450.0)
+        stage.show()
+
+//        getWindow().hide()
+
+
     }
 
     fun showSmallTimer(actionEvent: ActionEvent) {
