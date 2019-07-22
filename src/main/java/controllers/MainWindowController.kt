@@ -6,14 +6,18 @@ import com.jfoenix.controls.JFXTimePicker
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
+import javafx.scene.Node
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.scene.control.Label
+import javafx.stage.Screen
 import javafx.stage.Stage
 import main.java.Runtime
 import main.java.controls.JFXNumberField
 import java.time.LocalDate
 import java.time.LocalTime
+import javafx.stage.Screen.getPrimary
+import javafx.stage.WindowEvent
 
 
 class MainWindowController {
@@ -48,7 +52,7 @@ class MainWindowController {
 
         saveData()
 
-        val loader = FXMLLoader(javaClass.getResource("../../resources/view/LargeTimer.fxml"))
+        val loader = FXMLLoader(javaClass.getResource("../../resources/view/Timer.fxml"))
         val root: Parent = loader.load()
         val stage = Stage()
 
@@ -58,12 +62,17 @@ class MainWindowController {
         controller.startDate = startDate.value
         controller.startTime = startTime.value
 
-        stage.scene = Scene(root, 450.0, 450.0)
+        val primaryScreenBounds = Screen.getPrimary().visualBounds
+        stage.scene = Scene(root, 50.0 * 16.0 / 9.0, 50.0)
+        stage.x = primaryScreenBounds.maxX - (50.0 * 16.0 / 9.0) - 100
+        stage.y = primaryScreenBounds.maxY - 50.0 - 50
+        stage.isAlwaysOnTop = true
+        stage.setOnHidden {
+            (actionEvent.source as Node).scene.window.show()
+        }
         stage.show()
 
-//        getWindow().hide()
-
-
+        (actionEvent.source as Node).scene.window.hide()
     }
 
     fun showSmallTimer(actionEvent: ActionEvent) {
@@ -94,6 +103,5 @@ class MainWindowController {
         Runtime.PREFS.put(length.id, length.text)
         Runtime.PREFS.putLong(startDate.id, startDate.value.toEpochDay())
         Runtime.PREFS.putLong(startTime.id, startTime.value.toNanoOfDay())
-
     }
 }

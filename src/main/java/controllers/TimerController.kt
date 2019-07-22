@@ -32,8 +32,6 @@ class TimerController() {
     @FXML
     lateinit var message: Label
 
-    val countDownHourMinuteText = SimpleStringProperty()
-
     var raceName: String = ""
     var length: Int = 0
     var startDate: LocalDate = LocalDate.now()
@@ -78,22 +76,40 @@ class TimerController() {
             val end = LocalDateTime.of(startDate, startTime).plusHours(length.toLong())
             val current = LocalDateTime.now()
 
-            val countDown = Duration.between(current, end)
-            val countUp = Duration.between(start, current)
-
             Platform.runLater {
                 message.text = raceName
 
-                countDownHourMinute.text = countDown.toHours().toString().padStart(3, '0') + ":" +
-                        (countDown.toMinutes() - countDown.toHours() * 60).toString().padStart(2, '0')
-                countDownSecond.text = ":" +
-                        (countDown.seconds - countDown.toMinutes() * 60).toString().padStart(2, '0')
-
-                countUpHourMinute.text = countUp.toHours().toString().padStart(3, '0') + ":" +
-                        (countUp.toMinutes() - countUp.toHours() * 60).toString().padStart(2, '0')
-                countUpSecond.text = ":" +
-                        (countUp.seconds - countUp.toMinutes() * 60).toString().padStart(2, '0')
+                if (current < start) {
+                    val countDown = Duration.between(current, start)
+                    countDownHourMinute.text = "-" + getHourText(countDown)
+                    countDownSecond.text = getSecondText(countDown)
+                    countUpHourMinute.text = "-" + getHourText(countDown)
+                    countUpSecond.text = getSecondText(countDown)
+                } else if (current > end) {
+                    val countUp = Duration.between(end, current)
+                    countDownHourMinute.text = "+" + getHourText(countUp)
+                    countDownSecond.text = getSecondText(countUp)
+                    countUpHourMinute.text = "+" + getHourText(countUp)
+                    countUpSecond.text = getSecondText(countUp)
+                } else {
+                    val countDown = Duration.between(current, end)
+                    val countUp = Duration.between(start, current)
+                    countDownHourMinute.text = "-" + getHourText(countDown)
+                    countDownSecond.text = getSecondText(countDown)
+                    countUpHourMinute.text = "+" + getHourText(countUp)
+                    countUpSecond.text = getSecondText(countUp)
+                }
             }
         }, Date(timerStart.atZone(ZoneId.systemDefault()).toEpochSecond()), 1000)
+    }
+
+    private fun getHourText(duration: Duration): String {
+        return duration.toHours().toString().padStart(3, '0') + ":" +
+                (duration.toMinutes() - duration.toHours() * 60).toString().padStart(2, '0')
+    }
+
+    private fun getSecondText(duration: Duration): String {
+        return ":" +
+                (duration.seconds - duration.toMinutes() * 60).toString().padStart(2, '0')
     }
 }
