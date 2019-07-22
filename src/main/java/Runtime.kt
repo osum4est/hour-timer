@@ -11,7 +11,7 @@ import java.util.prefs.Preferences
 
 class Runtime : Application() {
     companion object {
-        const val VERSION: String = "v1.0.0"
+        const val VERSION: String = "v1.0"
         const val COPYRIGHT: String = "© Forrest Jones 2019"
 
         val PREFS: Preferences = Preferences.userNodeForPackage(Runtime::class.java)
