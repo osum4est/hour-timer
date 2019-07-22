@@ -37,6 +37,8 @@ class TimerController() {
     var startDate: LocalDate = LocalDate.now()
     var startTime: LocalTime = LocalTime.now()
 
+    var timerThread: TimerTask? = null
+
     @FXML
     fun initialize() {
         val hourMinuteFontSize = SimpleDoubleProperty()
@@ -71,7 +73,7 @@ class TimerController() {
 
         val timer = Timer(false)
         val timerStart = LocalDateTime.now().withNano(0).plusSeconds(1)
-        timer.schedule(timerTask {
+        timerThread = timerTask {
             val start = LocalDateTime.of(startDate, startTime)
             val end = LocalDateTime.of(startDate, startTime).plusHours(length.toLong())
             val current = LocalDateTime.now()
@@ -100,7 +102,9 @@ class TimerController() {
                     countUpSecond.text = getSecondText(countUp)
                 }
             }
-        }, Date(timerStart.atZone(ZoneId.systemDefault()).toEpochSecond()), 1000)
+        }
+
+        timer.schedule(timerThread, Date(timerStart.atZone(ZoneId.systemDefault()).toEpochSecond()), 1000)
     }
 
     private fun getHourText(duration: Duration): String {
@@ -111,5 +115,9 @@ class TimerController() {
     private fun getSecondText(duration: Duration): String {
         return ":" +
                 (duration.seconds - duration.toMinutes() * 60).toString().padStart(2, '0')
+    }
+
+    fun stopTimer() {
+        timerThread?.cancel()
     }
 }

@@ -18,6 +18,7 @@ import java.time.LocalDate
 import java.time.LocalTime
 import javafx.stage.Screen.getPrimary
 import javafx.stage.WindowEvent
+import javax.swing.Action
 
 
 class MainWindowController {
@@ -52,6 +53,31 @@ class MainWindowController {
 
         saveData()
 
+        val stage = showTimer(actionEvent)
+
+        stage.isFullScreen = true
+    }
+
+    fun showSmallTimer(actionEvent: ActionEvent) {
+        if (!validate())
+            return
+
+        saveData()
+
+        val stage = showTimer(actionEvent)
+
+        val primaryScreenBounds = Screen.getPrimary().visualBounds
+        val width = 500.0
+        val height = width * 9.0 / 16.0
+
+        stage.width = width
+        stage.height = height
+        stage.x = primaryScreenBounds.maxX - width - 20
+        stage.y = primaryScreenBounds.maxY - height - 20
+        stage.isAlwaysOnTop = true
+    }
+
+    private fun showTimer(e: ActionEvent): Stage {
         val loader = FXMLLoader(javaClass.getResource("../../resources/view/Timer.fxml"))
         val root: Parent = loader.load()
         val stage = Stage()
@@ -62,25 +88,18 @@ class MainWindowController {
         controller.startDate = startDate.value
         controller.startTime = startTime.value
 
-        val primaryScreenBounds = Screen.getPrimary().visualBounds
-        stage.scene = Scene(root, 50.0 * 16.0 / 9.0, 50.0)
-        stage.x = primaryScreenBounds.maxX - (50.0 * 16.0 / 9.0) - 100
-        stage.y = primaryScreenBounds.maxY - 50.0 - 50
-        stage.isAlwaysOnTop = true
+        val mainWindowStage = (e.source as Node).scene.window as Stage
+        stage.scene = Scene(root)
         stage.setOnHidden {
-            (actionEvent.source as Node).scene.window.show()
+            stage.hide()
+            mainWindowStage.show()
+            controller.stopTimer()
         }
+
         stage.show()
+        mainWindowStage.hide()
 
-        (actionEvent.source as Node).scene.window.hide()
-    }
-
-    fun showSmallTimer(actionEvent: ActionEvent) {
-        if (!validate())
-            return
-
-        saveData()
-        TODO()
+        return stage
     }
 
     private fun validate(): Boolean {
