@@ -4,6 +4,7 @@ import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.Scene
+import javafx.scene.image.Image
 import javafx.scene.text.Font
 import javafx.stage.Stage
 import java.util.prefs.Preferences
@@ -25,10 +26,11 @@ class Runtime : Application() {
         Font.loadFont(javaClass.getResourceAsStream("/font/roboto/Roboto-Regular.ttf"), 10.0)
 
         val root: Parent = FXMLLoader.load(javaClass.getResource("../resources/view/MainWindow.fxml"))
-        primaryStage?.title = "Runtime"
-        primaryStage?.scene = Scene(root)
-        primaryStage?.isResizable = false
-        primaryStage?.show()
+        primaryStage!!.icons!!.add(Image(Runtime::class.java.getResourceAsStream("../resources/icon/icon.png")))
+        primaryStage.title = "Runtime"
+        primaryStage.scene = Scene(root)
+        primaryStage.isResizable = false
+        primaryStage.show()
     }
 }
 
