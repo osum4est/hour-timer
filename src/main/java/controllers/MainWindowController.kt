@@ -79,7 +79,7 @@ class MainWindowController {
     }
 
     private fun showTimer(e: ActionEvent): Stage {
-        val loader = FXMLLoader(javaClass.getResource("../../resources/view/Timer.fxml"))
+        val loader = FXMLLoader(javaClass.getResource("/view/Timer.fxml"))
         val root: Parent = loader.load()
         val stage = Stage()
 
@@ -92,7 +92,7 @@ class MainWindowController {
         val mainWindowStage = (e.source as Node).scene.window as Stage
         stage.scene = Scene(root)
         stage.title = "Runtime"
-        stage.icons.add(Image(Runtime::class.java.getResourceAsStream("../resources/icon/icon.png")))
+        stage.icons.add(Image(javaClass.getResourceAsStream("/icon/icon.png")))
         stage.setOnHidden {
             stage.hide()
             mainWindowStage.show()

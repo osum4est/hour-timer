@@ -25,8 +25,8 @@ class Runtime : Application() {
     override fun start(primaryStage: Stage?) {
         Font.loadFont(javaClass.getResourceAsStream("/font/roboto/Roboto-Regular.ttf"), 10.0)
 
-        val root: Parent = FXMLLoader.load(javaClass.getResource("../resources/view/MainWindow.fxml"))
-        primaryStage!!.icons!!.add(Image(Runtime::class.java.getResourceAsStream("../resources/icon/icon.png")))
+        val root: Parent = FXMLLoader.load(javaClass.getResource("/view/MainWindow.fxml"))
+        primaryStage!!.icons!!.add(Image(javaClass.getResourceAsStream("/icon/icon.png")))
         primaryStage.title = "Runtime"
         primaryStage.scene = Scene(root)
         primaryStage.isResizable = false
