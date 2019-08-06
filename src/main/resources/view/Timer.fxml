@@ -1,52 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<VBox fx:id="container" alignment="CENTER" prefHeight="376.0" prefWidth="525.0" style="-fx-background-color: BLACK;"
-      xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="main.java.controllers.TimerController">
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="container" alignment="CENTER" prefHeight="376.0" prefWidth="525.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.TimerController">
     <GridPane alignment="CENTER" maxWidth="1.7976931348623157E308">
         <columnConstraints>
-            <ColumnConstraints/>
-            <ColumnConstraints/>
+            <ColumnConstraints />
+            <ColumnConstraints />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints/>
-            <RowConstraints/>
-            <RowConstraints/>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
         </rowConstraints>
 
-        <Label fx:id="countUpHourMinute" text="100:11" textAlignment="CENTER" textFill="RED"
-               GridPane.halignment="CENTER">
+        <Label fx:id="elapsedTime" text="ELAPSED TIME" textAlignment="CENTER" textFill="RED" GridPane.halignment="CENTER" GridPane.columnSpan="2">
             <font>
-                <Font name="Monospaced Regular" size="50.0"/>
+                <Font name="Monospaced Bold" size="20.0" />
             </font>
         </Label>
-        <Label fx:id="countDownHourMinute" text="-" textAlignment="CENTER" textFill="#b0ff4a"
-               GridPane.halignment="CENTER" GridPane.rowIndex="1">
+        <Label fx:id="countUpHourMinute" text="100:11" textAlignment="CENTER" textFill="RED" GridPane.halignment="CENTER" GridPane.rowIndex="1">
             <font>
-                <Font name="Monospaced Regular" size="50.0"/>
+                <Font name="Monospaced Bold" size="50.0" />
             </font>
         </Label>
-        <Label fx:id="countUpSecond" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" text=":59"
-               textAlignment="CENTER" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+        <Label fx:id="timeToCutoff" text="TIME TO CUTOFF" textAlignment="CENTER" textFill="#b0ff4a" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.columnSpan="2">
             <font>
-                <Font name="Monospaced Regular" size="18.0"/>
+                <Font name="Monospaced Bold" size="20.0" />
             </font>
         </Label>
-        <Label fx:id="countDownSecond" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" text="-"
-               textAlignment="CENTER" textFill="#b0ff4a" GridPane.columnIndex="1" GridPane.rowIndex="1"
-               GridPane.halignment="CENTER">
+        <Label fx:id="countDownHourMinute" text="-" textAlignment="CENTER" textFill="#b0ff4a" GridPane.halignment="CENTER" GridPane.rowIndex="3">
             <font>
-                <Font name="Monospaced Regular" size="18.0"/>
+                <Font name="Monospaced Bold" size="50.0" />
+            </font>
+        </Label>
+        <Label fx:id="countUpSecond" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" text=":59" textAlignment="CENTER" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+                <Font name="Monospaced Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="countDownSecond" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" text="-" textAlignment="CENTER" textFill="#b0ff4a" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <font>
+                <Font name="Monospaced Bold" size="18.0" />
             </font>
         </Label>
     </GridPane>
-    <Label fx:id="message" alignment="CENTER" maxWidth="1.7976931348623157E308"
-           text="MOAB 240 ENDURANCE RUN, UNOFFICIAL TIME" textFill="RED">
+    <Label fx:id="message" alignment="CENTER" maxWidth="1.7976931348623157E308" text="MOAB 240 ENDURANCE RUN, UNOFFICIAL TIME" textFill="RED">
         <font>
-            <Font size="9.0"/>
+            <Font name="Monospaced Bold" size="14.0" />
         </font>
     </Label>
 </VBox>

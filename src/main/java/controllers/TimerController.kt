@@ -18,6 +18,12 @@ class TimerController() {
     lateinit var container: VBox
 
     @FXML
+    lateinit var elapsedTime: Label
+
+    @FXML
+    lateinit var timeToCutoff: Label
+
+    @FXML
     lateinit var countDownHourMinute: Label
 
     @FXML
@@ -41,10 +47,18 @@ class TimerController() {
 
     @FXML
     fun initialize() {
+        val labelFontSize = SimpleDoubleProperty()
+        labelFontSize.bind(container.widthProperty().divide(25))
+        val labelBinding =
+            Bindings.concat("-fx-font-size: ", labelFontSize.asString(), ";", "-fx-font-family: monospaced; -fx-font-weight: bold")
+
+        elapsedTime.styleProperty().bind(labelBinding)
+        timeToCutoff.styleProperty().bind(labelBinding)
+
         val hourMinuteFontSize = SimpleDoubleProperty()
         hourMinuteFontSize.bind(container.widthProperty().divide(7))
         val hourMinuteBinding =
-            Bindings.concat("-fx-font-size: ", hourMinuteFontSize.asString(), ";", "-fx-font-family: monospaced;")
+            Bindings.concat("-fx-font-size: ", hourMinuteFontSize.asString(), ";", "-fx-font-family: monospaced; -fx-font-weight: bold")
 
         countDownHourMinute.styleProperty().bind(hourMinuteBinding)
         countUpHourMinute.styleProperty().bind(hourMinuteBinding)
@@ -52,7 +66,7 @@ class TimerController() {
         val secondFontSize = SimpleDoubleProperty()
         secondFontSize.bind(container.widthProperty().divide(18))
         val secondBinding =
-            Bindings.concat("-fx-font-size: ", secondFontSize.asString(), ";", "-fx-font-family: monospaced;")
+            Bindings.concat("-fx-font-size: ", secondFontSize.asString(), ";", "-fx-font-family: monospaced; -fx-font-weight: bold")
 
         val secondPadding = SimpleDoubleProperty()
         secondPadding.bind(secondFontSize.divide(2.5))
@@ -65,9 +79,9 @@ class TimerController() {
         countUpSecond.paddingProperty().bind(secondPaddingBinding)
 
         val messageFontSize = SimpleDoubleProperty()
-        messageFontSize.bind(container.widthProperty().divide(50))
+        messageFontSize.bind(container.widthProperty().divide(35))
         val messageBinding =
-            Bindings.concat("-fx-font-size: ", messageFontSize.asString(), ";", "-fx-font-family: monospaced;")
+            Bindings.concat("-fx-font-size: ", messageFontSize.asString(), ";", "-fx-font-family: monospaced; -fx-font-weight: bold")
 
         message.styleProperty().bind(messageBinding)
 
