@@ -21,12 +21,12 @@
             <RowConstraints />
         </rowConstraints>
 
-        <Label fx:id="elapsedTime" text="ELAPSED TIME" textAlignment="CENTER" textFill="RED" GridPane.halignment="CENTER" GridPane.columnSpan="2">
+        <Label fx:id="elapsedTime" text="ELAPSED TIME" textAlignment="CENTER" textFill="YELLOW" GridPane.halignment="CENTER" GridPane.columnSpan="2">
             <font>
                 <Font name="Monospaced Bold" size="20.0" />
             </font>
         </Label>
-        <Label fx:id="countUpHourMinute" text="100:11" textAlignment="CENTER" textFill="RED" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+        <Label fx:id="countUpHourMinute" text="100:11" textAlignment="CENTER" textFill="YELLOW" GridPane.halignment="CENTER" GridPane.rowIndex="1">
             <font>
                 <Font name="Monospaced Bold" size="50.0" />
             </font>
@@ -41,7 +41,7 @@
                 <Font name="Monospaced Bold" size="50.0" />
             </font>
         </Label>
-        <Label fx:id="countUpSecond" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" text=":59" textAlignment="CENTER" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+        <Label fx:id="countUpSecond" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" text=":59" textAlignment="CENTER" textFill="YELLOW" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
             <font>
                 <Font name="Monospaced Bold" size="18.0" />
             </font>
@@ -52,7 +52,7 @@
             </font>
         </Label>
     </GridPane>
-    <Label fx:id="message" alignment="CENTER" maxWidth="1.7976931348623157E308" text="MOAB 240 ENDURANCE RUN, UNOFFICIAL TIME" textFill="RED">
+    <Label fx:id="message" alignment="CENTER" textAlignment="CENTER" maxWidth="1.7976931348623157E308" text="MOAB 240 ENDURANCE RUN, UNOFFICIAL TIME" textFill="YELLOW" wrapText="true">
         <font>
             <Font name="Monospaced Bold" size="14.0" />
         </font>

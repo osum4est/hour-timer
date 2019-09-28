@@ -56,7 +56,7 @@ class TimerController() {
         timeToCutoff.styleProperty().bind(labelBinding)
 
         val hourMinuteFontSize = SimpleDoubleProperty()
-        hourMinuteFontSize.bind(container.widthProperty().divide(7))
+        hourMinuteFontSize.bind(container.widthProperty().divide(7.5))
         val hourMinuteBinding =
             Bindings.concat("-fx-font-size: ", hourMinuteFontSize.asString(), ";", "-fx-font-family: monospaced; -fx-font-weight: bold")
 
@@ -79,7 +79,7 @@ class TimerController() {
         countUpSecond.paddingProperty().bind(secondPaddingBinding)
 
         val messageFontSize = SimpleDoubleProperty()
-        messageFontSize.bind(container.widthProperty().divide(35))
+        messageFontSize.bind(container.widthProperty().divide(23))
         val messageBinding =
             Bindings.concat("-fx-font-size: ", messageFontSize.asString(), ";", "-fx-font-family: monospaced; -fx-font-weight: bold")
 
